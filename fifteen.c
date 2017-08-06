@@ -261,7 +261,7 @@ bool won(void)
     {
         for (int j = 0; j < d; j++)
         {
-            if (board[d-1][d-1] == 0)
+            if (i == d-1 && j == d-1)
             {
                 return true;
             }
