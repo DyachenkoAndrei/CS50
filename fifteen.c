@@ -231,13 +231,13 @@ bool move(int tile)
         board[row][column] = 0;
         return true;
     }
-    if (row - 1 > 0 && board[row - 1][column] == 0)
+    if (row - 1 >= 0 && board[row - 1][column] == 0)
     {
         board[row - 1][column] = board[row][column];
         board[row][column] = 0;
         return true;
     }
-    if (column - 1 > 0 && board[row][column - 1] == 0)
+    if (column - 1 >= 0 && board[row][column - 1] == 0)
     {
         board[row][column - 1] = board[row][column];
         board[row][column] = 0;
@@ -255,17 +255,25 @@ bool move(int tile)
 bool won(void)
 {
     // TODO
-   
+    int counter = 1;
     
     for (int i = 0; i < d; i++)
     {
         for (int j = 0; j < d; j++)
         {
-            if ((board[i][j] < board[i][j + 1]) && (board[i][j] < board [i + 1][j]))
+            if (board[d-1][d-1] == 0)
             {
                 return true;
             }
+            if (counter != board[i][j])
+            {
+                return false;
+            }
+            counter++;
+            
         }
     }
+    
     return false;
+    
 }
